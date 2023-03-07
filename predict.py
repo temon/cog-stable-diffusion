@@ -17,7 +17,7 @@ from diffusers.pipelines.stable_diffusion.safety_checker import (
 )
 
 
-MODEL_ID = "stabilityai/stable-diffusion-2-1"
+MODEL_ID = "lllyasviel/ControlNet"
 MODEL_CACHE = "diffusers-cache"
 SAFETY_MODEL_ID = "CompVis/stable-diffusion-safety-checker"
 
@@ -124,11 +124,6 @@ class Predictor(BasePredictor):
             output_path = f"/tmp/out-{i}.png"
             sample.save(output_path)
             output_paths.append(Path(output_path))
-
-        if len(output_paths) == 0:
-            raise Exception(
-                f"NSFW content detected. Try running it again, or try a different prompt."
-            )
 
         return output_paths
 
